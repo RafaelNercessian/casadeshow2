@@ -27,15 +27,16 @@ public class Evento implements Serializable {
 	private String cidade;
 	private String data;
 	private String nomeDaFoto;
+	private byte[] bytesImagem;
 	@Transient
 	private MultipartFile imagem;
-		
-	public String getNomeDaFoto() {
-		return nomeDaFoto;
+	
+	public byte[] getBytesImagem() {
+		return bytesImagem;
 	}
 
-	public void setNomeDaFoto(String nomeDaFoto) {
-		this.nomeDaFoto = nomeDaFoto;
+	public void setBytesImagem(byte[] bytesImagem) {
+		this.bytesImagem = bytesImagem;
 	}
 
 	public MultipartFile getImagem() {
@@ -44,6 +45,14 @@ public class Evento implements Serializable {
 
 	public void setImagem(MultipartFile imagem) {
 		this.imagem = imagem;
+	}
+
+	public String getNomeDaFoto() {
+		return nomeDaFoto;
+	}
+
+	public void setNomeDaFoto(String nomeDaFoto) {
+		this.nomeDaFoto = nomeDaFoto;
 	}
 
 	public String getLocal() {
