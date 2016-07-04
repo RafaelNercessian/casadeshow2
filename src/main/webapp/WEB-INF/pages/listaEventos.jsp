@@ -6,7 +6,7 @@
   <table style="margin-top:60px;" class="table table-hover table-striped">
     <thead>
       <tr>
-      	<br/>
+      	<th></th>
         <th>Nome</th>
         <th>Descrição</th>
         <th>Local</th>

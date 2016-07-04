@@ -10,7 +10,7 @@
 	          <p class="lead">${evento.data}</p>
 	        </div>
 	        <div class="col-md-5 col-md-pull-7">
-	          <img class="featurette-image img-responsive center-block" src='<c:url value="/resources/images/Hardwell.jpg"/>' alt="Generic placeholder image">
+	          <img class="featurette-image img-responsive center-block" src='<c:url value="/resources/images/${evento.nomeDaFoto}"/>' alt="Generic placeholder image">
 	        </div>
 	        <div class="col-md-12">
 	        	<p>${evento.descricao}</p>

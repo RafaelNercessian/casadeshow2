@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.casadeshow.dao.EventoDao;
 import com.casadeshow.modelo.Evento;
+import com.casadeshow.validator.EventoValidator;
 
 @Controller
 public class EventoController {
@@ -26,6 +31,14 @@ public class EventoController {
 	@Autowired
 	private EventoDao dao;
 	private byte[] bFile;
+	
+	@Autowired
+	private EventoValidator validator;
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		binder.setValidator(validator);
+	}
 	
 	@RequestMapping("/listaEventos")
 	public String evento(Model model){
@@ -60,7 +73,12 @@ public class EventoController {
 	
 	@RequestMapping(value="/adiciona",method=RequestMethod.POST)
 	public String adiciona(HttpServletRequest request,
-			@ModelAttribute("evento") Evento evento){
+			@ModelAttribute("evento") @Validated Evento evento,BindingResult result){
+		
+		
+		if(result.hasErrors()){
+			return "adicionaEvento";
+		}
 		MultipartFile multipartFile = evento.getImagem();
 		String fileName = multipartFile.getOriginalFilename();
 		try {
