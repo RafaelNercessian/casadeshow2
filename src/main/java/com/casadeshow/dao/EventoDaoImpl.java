@@ -33,7 +33,10 @@ public class EventoDaoImpl implements EventoDao{
 
 	@Transactional
 	public void adiciona(Evento evento) {
-		manager.persist(evento);
+		if(evento.getId()==null)
+			manager.persist(evento);
+		else
+			manager.merge(evento);
 	}
 	
 }

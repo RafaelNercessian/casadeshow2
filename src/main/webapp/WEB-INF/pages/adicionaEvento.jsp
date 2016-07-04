@@ -4,7 +4,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@include file="/WEB-INF/pages/cabecalho.jsp"%>
 <div class="container">
-<h2>Adicione um evento</h2>
+<h2>Adicionar um evento</h2>
 <br />
 <form:form method="post" commandName="evento" action="${s:mvcUrl('EC#adiciona').build()}" enctype="multipart/form-data">
 	<div class="form-group">
@@ -32,7 +32,7 @@
 		<form:input path="data" id="data" class="form-control"/>
 		<span style="color:red;font-weight:bold"><form:errors path="data" class="control-label" /></span>
 	</div>
-	<div class="form-group">
+	<div class="form-group ">
 		<label for="imagem">Imagem:</label> 
 		<input type="file" name="imagem" required="true" title="Por favor insira a imagem."/>
 	</div>

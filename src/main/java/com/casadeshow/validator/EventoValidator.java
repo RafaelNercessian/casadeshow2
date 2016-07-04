@@ -19,7 +19,7 @@ public class EventoValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descricao", "descricao", "Por favor, insira a descrição.");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "local", "local", "Por favor, insira o local do evento.");	
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cidade", "cidade", "Por favor, insira a cidade do evento.");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "data", "data", "Por favor insira a data do evento.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "data", "data", "Por favor, insira a data do evento.");
 	}
 
 }

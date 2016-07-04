@@ -3,7 +3,6 @@ package com.casadeshow.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.casadeshow.dao.EventoDao;
 import com.casadeshow.modelo.Evento;
@@ -73,12 +73,13 @@ public class EventoController {
 	
 	@RequestMapping(value="/adiciona",method=RequestMethod.POST)
 	public String adiciona(HttpServletRequest request,
-			@ModelAttribute("evento") @Validated Evento evento,BindingResult result){
-		
+			@ModelAttribute("evento") @Validated Evento evento,
+			BindingResult result,RedirectAttributes redirectAttributes){
 		
 		if(result.hasErrors()){
 			return "adicionaEvento";
 		}
+		
 		MultipartFile multipartFile = evento.getImagem();
 		String fileName = multipartFile.getOriginalFilename();
 		try {
@@ -86,16 +87,23 @@ public class EventoController {
 			multipartFile.transferTo(file);
 			bFile = new byte[(int) file.length()];
 		     FileInputStream fileInputStream = new FileInputStream(file);
-		     //convert file into array of bytes
 		     fileInputStream.read(bFile);
 		     fileInputStream.close();
 	        } catch (Exception e) {
 		     e.printStackTrace();
 	        }
+		redirectAttributes.addFlashAttribute("msg", "Evento adicionado com sucesso!");
 		evento.setBytesImagem(bFile);
 		evento.setNomeDaFoto(fileName);
 		dao.adiciona(evento);
 		return "redirect:/listaEventos";
 	}
 	
+	@RequestMapping("/detalheEvento/{id}")
+	public String edita(@PathVariable Integer id,Model model){
+		Evento buscaEvento = dao.buscaEvento(id);
+		model.addAttribute("evento", buscaEvento);
+		return "editaEvento";	
+	}
+
 }
