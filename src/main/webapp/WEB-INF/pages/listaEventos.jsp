@@ -5,7 +5,7 @@
 <div class="container">
 	<div style="margin-top: 100px">
 		<c:if test="${not empty msg}">
-			<span style="color: green"><strong>${msg}</strong></span>
+			<span id="mensagem" style="color: green"><strong>${msg}</strong></span>
 		</c:if>
 	</div>
 	<table style="margin-top: 20px;"
@@ -33,6 +33,8 @@
 							class="glyphicon glyphicon-info-sign" /></a></td>
 					<td><a href="${s:mvcUrl('EC#edita').arg(0,evento.id).build()}"><span
 							class="glyphicon glyphicon-pencil" /></a></td>
+					<td><a href="${s:mvcUrl('EC#remove').arg(0,evento.id).build()}"><span
+							class="glyphicon glyphicon-remove" /></a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

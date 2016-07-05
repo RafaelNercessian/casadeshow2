@@ -105,5 +105,11 @@ public class EventoController {
 		model.addAttribute("evento", buscaEvento);
 		return "editaEvento";	
 	}
+	
+	@RequestMapping("/deletaEvento/{id}")
+	public String remove(@PathVariable Integer id){
+		dao.remove(id);
+		return "redirect:/listaEventos";
+	}
 
 }

@@ -8,4 +8,5 @@ public interface EventoDao {
 	List<Evento> listaEventos();
 	Evento buscaEvento(Integer id);
 	void adiciona(Evento evento);
+	void remove(Integer id);
 }

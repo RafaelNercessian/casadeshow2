@@ -38,5 +38,11 @@ public class EventoDaoImpl implements EventoDao{
 		else
 			manager.merge(evento);
 	}
+
+	@Transactional
+	public void remove(Integer id) {
+		Evento eventoParaDeletar = manager.find(Evento.class, id);
+		manager.remove(eventoParaDeletar);
+	}
 	
 }

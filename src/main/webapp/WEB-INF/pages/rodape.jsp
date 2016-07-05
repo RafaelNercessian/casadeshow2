@@ -24,5 +24,8 @@
             });  
 	});
 </script>
+<script>
+	$('#mensagem').delay(1000).fadeOut();
+</script>
   </body>
 </html>
