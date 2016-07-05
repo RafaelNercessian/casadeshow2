@@ -2,6 +2,8 @@ package com.casadeshow.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,6 +26,7 @@ import com.casadeshow.modelo.Evento;
 import com.casadeshow.validator.EventoValidator;
 
 @Controller
+@RequestMapping("/admin")
 public class EventoAdminController {
 
 	@Autowired
@@ -36,6 +39,23 @@ public class EventoAdminController {
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		binder.setValidator(validator);
+	}
+	
+	@RequestMapping("/listaEventosAdmin")
+	public String evento(Model model){
+		List<Evento> eventos = dao.listaEventos();
+		for (Evento evento : eventos) {
+			 byte[] bAvatar = evento.getBytesImagem();
+		       try{
+		            FileOutputStream fos = new FileOutputStream("C:\\Users\\Rafael\\workspace\\casadeshow2\\src\\main\\webapp\\resources\\images\\"+evento.getNomeDaFoto()); 
+		            fos.write(bAvatar);
+		            fos.close();
+		        }catch(Exception e){
+		            e.printStackTrace();
+		        }
+		}
+		model.addAttribute("eventos",eventos);
+		return "listaEventosAdmin";
 	}
 	
 	@RequestMapping("/adicionaEvento")
