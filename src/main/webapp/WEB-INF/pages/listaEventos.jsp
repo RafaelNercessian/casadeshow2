@@ -31,9 +31,9 @@
 					<td><a
 						href="${s:mvcUrl('EC#detalhe').arg(0,evento.id).build()}"><span
 							class="glyphicon glyphicon-info-sign" /></a></td>
-					<td><a href="${s:mvcUrl('EC#edita').arg(0,evento.id).build()}"><span
+					<td><a href="${s:mvcUrl('EAC#edita').arg(0,evento.id).build()}"><span
 							class="glyphicon glyphicon-pencil" /></a></td>
-					<td><a href="${s:mvcUrl('EC#remove').arg(0,evento.id).build()}"><span
+					<td><a href="${s:mvcUrl('EAC#remove').arg(0,evento.id).build()}"><span
 							class="glyphicon glyphicon-remove" /></a></td>
 				</tr>
 			</c:forEach>

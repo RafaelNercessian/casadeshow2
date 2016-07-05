@@ -7,7 +7,7 @@
 	<h2>Editar um evento</h2>
 	<br />
 	<form:form method="post" commandName="evento"
-		action="${s:mvcUrl('EC#adiciona').build()}"
+		action="${s:mvcUrl('EAC#adiciona').build()}"
 		enctype="multipart/form-data">
 		<input type="hidden" value="${evento.id}" name="id" />
 		<div class="form-group">
