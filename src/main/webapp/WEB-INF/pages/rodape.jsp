@@ -27,5 +27,11 @@
 <script>
 	$('#mensagem').delay(1000).fadeOut();
 </script>
+
+	<script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
   </body>
 </html>
