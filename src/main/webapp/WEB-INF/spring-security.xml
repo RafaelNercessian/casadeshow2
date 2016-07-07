@@ -9,7 +9,7 @@
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<form-login 
 		    login-page="/login" 
-		    default-target-url="/administrador"
+		    default-target-url="/admin"
 			authentication-failure-url="/login?error" 
 			username-parameter="username"
 			password-parameter="password"
@@ -21,7 +21,7 @@
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="mkyong" password="123456" authorities="ROLE_ADMIN" />
+				<user name="Rafael" password="123456" authorities="ROLE_ADMIN" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

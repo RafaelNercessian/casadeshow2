@@ -6,12 +6,8 @@ import java.io.FileOutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,6 +26,7 @@ import com.casadeshow.modelo.Evento;
 import com.casadeshow.validator.EventoValidator;
 
 @Controller
+@RequestMapping("/admin")
 public class EventoAdminController {
 
 	@Autowired
@@ -43,8 +40,13 @@ public class EventoAdminController {
 	protected void initBinder(WebDataBinder binder) {
 		binder.setValidator(validator);
 	}
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public String administrador(){
+		return "administrador";
+	}
 
-	@RequestMapping("/admin/listaEventosAdmin")
+	@RequestMapping("/listaEventosAdmin")
 	public String evento(Model model) {
 		List<Evento> eventos = dao.listaEventos();
 		for (Evento evento : eventos) {
@@ -63,14 +65,14 @@ public class EventoAdminController {
 		return "listaEventosAdmin";
 	}
 
-	@RequestMapping("/admin/adicionaEvento")
+	@RequestMapping("/adicionaEvento")
 	public String adicionaEvento(Model model) {
 		Evento evento = new Evento();
 		model.addAttribute("evento", evento);
 		return "adicionaEvento";
 	}
 
-	@RequestMapping(value = "/admin/adiciona", method = RequestMethod.POST)
+	@RequestMapping(value = "/adiciona", method = RequestMethod.POST)
 	public String adiciona(HttpServletRequest request,
 			@ModelAttribute("evento") @Validated Evento evento,
 			BindingResult result, RedirectAttributes redirectAttributes) {
@@ -97,39 +99,20 @@ public class EventoAdminController {
 		evento.setBytesImagem(bFile);
 		evento.setNomeDaFoto(fileName);
 		dao.adiciona(evento);
-		return "redirect:/listaEventos";
+		return "redirect:/admin/listaEventosAdmin";
 	}
 
-	@RequestMapping("/admin/detalheEvento/{id}")
+	@RequestMapping("/detalheEvento/{id}")
 	public String edita(@PathVariable Integer id, Model model) {
 		Evento buscaEvento = dao.buscaEvento(id);
 		model.addAttribute("evento", buscaEvento);
 		return "editaEvento";
 	}
 
-	@RequestMapping("/admin/deletaEvento/{id}")
+	@RequestMapping("/deletaEvento/{id}")
 	public String remove(@PathVariable Integer id) {
 		dao.remove(id);
-		return "redirect:/listaEventos";
+		return "redirect:/listaEventosAdmin";
 	}
 	
-	@RequestMapping("/administrador")
-	public String administrador(){
-		return "administrador";
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage() {
-	    return "login";
-	}
-	 
-	@RequestMapping(value="/logout", method = RequestMethod.GET)
-	public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    if (auth != null){    
-	        new SecurityContextLogoutHandler().logout(request, response, auth);
-	    }
-	    return "redirect:/login?logout";
-	}
-
 }
