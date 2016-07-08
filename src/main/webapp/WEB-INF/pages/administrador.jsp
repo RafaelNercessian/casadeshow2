@@ -8,12 +8,17 @@
 		Seja bem-vindo ${pageContext.request.userPrincipal.name}! 
 	</h2>
 	<h3>Tarefas: </h3>
-	<a href="<c:url value="/admin/adicionaEvento" />">Adicionar um evento</a>
-	<a href="<c:url value="/admin/listaEventosAdmin" />">Listar Eventos</a>
+	<ul>
+		<li><a href="<c:url value="/admin/adicionaEvento" />">Adicionar um evento</a></li>
+		<li><a href="<c:url value="/admin/listaEventosAdmin" />">Listar Eventos</a></li>
+	</ul>
+	<br/>
 	<br/>
 	<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-	    <input type="submit" value="Logout" class="btn btn-primary" />
+	    <input type="submit" value="Logout" class="btn btn-primary pull-right" />
 	</form:form>
-	
+	<br/>
+	<br/>
+	<br/>
 <%@include file="/WEB-INF/pages/rodape.jsp"%>
 </div>

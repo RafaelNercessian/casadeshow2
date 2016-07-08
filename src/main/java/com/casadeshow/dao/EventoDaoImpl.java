@@ -44,5 +44,12 @@ public class EventoDaoImpl implements EventoDao{
 		Evento eventoParaDeletar = manager.find(Evento.class, id);
 		manager.remove(eventoParaDeletar);
 	}
-	
+
+	public List<Evento> procuraEventos(String palavra){
+		TypedQuery<Evento> query = manager.createQuery("select e from Evento e where e.nome like:palavra"
+				+ " or e.descricao like:palavra or e.local like:palavra or e.cidade like:palavra"
+							, Evento.class);
+		query.setParameter("palavra", "%"+palavra+"%");
+		return query.getResultList();
+	}
 }

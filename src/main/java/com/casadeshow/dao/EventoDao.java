@@ -9,4 +9,5 @@ public interface EventoDao {
 	Evento buscaEvento(Integer id);
 	void adiciona(Evento evento);
 	void remove(Integer id);
+	List<Evento> procuraEventos(String palavra);
 }

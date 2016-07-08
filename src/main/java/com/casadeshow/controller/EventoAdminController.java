@@ -112,7 +112,7 @@ public class EventoAdminController {
 	@RequestMapping("/deletaEvento/{id}")
 	public String remove(@PathVariable Integer id) {
 		dao.remove(id);
-		return "redirect:/listaEventosAdmin";
+		return "redirect:/admin/listaEventosAdmin";
 	}
 	
 }

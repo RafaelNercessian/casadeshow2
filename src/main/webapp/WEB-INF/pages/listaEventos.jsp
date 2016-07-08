@@ -1,8 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ include file="/WEB-INF/pages/cabecalho.jsp"%>
 <div class="container">
+<div class="row" >
+		<form:form id="expenseView" method="post" commandName="evento" action="${s:mvcUrl('EC#pesquisaEventos').build()}">
+        <div style="margin-top:100px" class="col-sm-6 col-sm-offset-3">
+            <div id="imaginary_container"> 
+                <div class="input-group stylish-input-group">
+                   <input name="nome" class="form-control">
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>  
+                    </span>
+                </div>
+            </div>
+        </div>
+		</form:form>
+	
+	</div>
 	<table style="margin-top: 60px;"
 		class="table table-hover table-striped">
 		<thead>
