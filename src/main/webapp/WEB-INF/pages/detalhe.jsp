@@ -4,7 +4,7 @@
 <div class="container">
 	<div style="margin-top:100px" class="row featurette">
 	        <div class="col-md-7 col-md-push-5">
-	          <h2 class="featurette-heading">${evento.nome}</h2>
+	          <h2 style="margin-top:0!important;" class="featurette-heading">${evento.nome}</h2>
 	          <p class="lead">${evento.local}</p>
 	           <p class="lead">${evento.cidade}</p>
 	          <p class="lead">${evento.data}</p>

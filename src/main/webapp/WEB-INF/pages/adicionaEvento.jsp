@@ -6,7 +6,7 @@
 <div class="container">
 <h2>Adicionar um evento</h2>
 <br />
-<form:form method="post" commandName="eventoEntrado" action="${s:mvcUrl('EAC#adiciona').build()}" enctype="multipart/form-data">
+<form:form method="post" commandName="evento" action="${s:mvcUrl('EAC#adiciona').build()}" enctype="multipart/form-data">
 	<div class="form-group">
 		<label for="nome">Nome:</label> 
 		<form:input path="nome" id="nome" class="form-control"/>
