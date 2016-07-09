@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ include file="/WEB-INF/pages/cabecalho.jsp"%>
 <div class="container">
 <div class="row" >
-<h1 style="margin-top:100px">Carrinho de compras</h1>
+<h1 style="margin-top:100px">Carrinho de compras <span class="glyphicon glyphicon-shopping-cart"></span></h1>
 	<table style="margin-top: 60px;"
 		class="table table-hover table-striped">
 		<thead>
@@ -15,25 +17,30 @@
 				<th>Data</th>
 				<th>Qtde.</th>
 				<th>Preço</th>
-				<th>Preço Total</th>
+				<th>Ações</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${lista}" var="listaCompras">
 				<tr>
 					<td><img width="100"
-						src='<c:url value="/resources/images/${evento.nomeDaFoto}"/>'></td>
-					<td>${evento.nome}</td>
-					<td>${evento.local}</td>
-					<td>${evento.cidade}</td>
-					<td>${evento.data}</td>
+						src='<c:url value="/resources/images/${listaCompras.evento.nomeDaFoto}"/>'></td>
+					<td>${listaCompras.evento.nome}</td>
+					<td>${listaCompras.evento.local}</td>
+					<td>${listaCompras.evento.cidade}</td>
+					<td>${listaCompras.evento.data}</td>
 					<td>${listaCompras.quantidade}</td>
-					<td>${listaCompras.preco}</td>
-					<td>${total}</td>
+					<td>R$ ${listaCompras.preco}</td>
+					<td><form:form method="post" modelAttribute="carrinho"
+						action="${s:mvcUrl('CCC#deleta').build()}">
+						<input type="hidden" name="id" value="${listaCompras.evento.id}" />
+						<button type="submit" class="btn btn-xs btn-default">
+						  <span class="glyphicon glyphicon-trash"></span>&nbsp;
+						</button>
+					</form:form></td>
 				</tr>
 			</c:forEach>
 				<tr>
-					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>

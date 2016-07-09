@@ -18,10 +18,10 @@ import com.casadeshow.modelo.Evento;
 public class CarrinhoComprasContoller {
 
 	private List<Carrinho> lista;
-
+	
 	@RequestMapping("/carrinho")
 	public String carrinhoCompras(Model model) {
-		return "carrinho";
+		return "comprar";
 	}
 
 	@RequestMapping(value = "/adicionaCarrinho", method = RequestMethod.POST)
@@ -37,6 +37,7 @@ public class CarrinhoComprasContoller {
 		carrinho.setPreco(preco);
 		carrinho.setQuantidade(quantidade);
 		carrinho.setId(evento.getId());
+		carrinho.setEvento(evento);
 		if (lista == null) {
 			lista = new ArrayList<Carrinho>();
 			lista.add(carrinho);

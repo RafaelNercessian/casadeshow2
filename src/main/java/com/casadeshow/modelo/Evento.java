@@ -130,6 +130,4 @@ public class Evento implements Serializable {
 	public void setPrecoTotal(BigDecimal precoTotal) {
 		this.precoTotal = precoTotal;
 	}
-
-
 }
