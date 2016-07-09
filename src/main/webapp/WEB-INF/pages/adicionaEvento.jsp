@@ -32,6 +32,11 @@
 		<form:input path="data" id="data" class="form-control"/>
 		<span style="color:red;font-weight:bold"><form:errors path="data" class="control-label" /></span>
 	</div>
+	<div class="form-group">
+		<label for="preco">Preço:</label> 
+		<form:input path="preco" id="preco" class="form-control"/>
+		<span style="color:red;font-weight:bold"><form:errors path="preco" class="control-label" /></span>
+	</div>
 	<div class="form-group ">
 		<label for="imagem">Imagem:</label> 
 		<input type="file" name="imagem" required="true" title="Por favor insira a imagem."/>

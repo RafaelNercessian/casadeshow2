@@ -30,6 +30,7 @@
 				<th>Local</th>
 				<th>Cidade</th>
 				<th>Data</th>
+				<th>Preço</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -41,6 +42,7 @@
 					<td>${evento.local}</td>
 					<td>${evento.cidade}</td>
 					<td>${evento.data}</td>
+					<td>${evento.preco}</td>
 					<td><a
 						href="${s:mvcUrl('EC#detalhe').arg(0,evento.id).build()}"><span
 							class="glyphicon glyphicon-info-sign" /></a></td>

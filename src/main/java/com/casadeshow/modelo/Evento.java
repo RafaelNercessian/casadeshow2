@@ -30,7 +30,16 @@ public class Evento implements Serializable {
 	private byte[] bytesImagem;
 	@Transient
 	private MultipartFile imagem;
+	private String preco;
 	
+	public String getPreco() {
+		return preco;
+	}
+
+	public void setPreco(String preco) {
+		this.preco = preco;
+	}
+
 	public byte[] getBytesImagem() {
 		return bytesImagem;
 	}
