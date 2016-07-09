@@ -24,7 +24,7 @@
 					<td>${evento.local}</td>
 					<td>${evento.cidade}</td>
 					<td>${evento.data}</td>
-					<td>${preco}</td>
+					<td>${evento.preco}</td>
 				</tr>
 		</tbody>
 	</table>

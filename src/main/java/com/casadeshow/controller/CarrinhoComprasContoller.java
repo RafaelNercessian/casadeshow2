@@ -14,11 +14,11 @@ import com.casadeshow.modelo.Evento;
 @Controller
 public class CarrinhoComprasContoller {
 	
-	private String precoString;
+	private Evento eventoComprar;
 
 	@RequestMapping("/carrinhoCompras")
 	public String carrinhoCompras(Model model){
-		model.addAttribute("preco", precoString);
+		model.addAttribute("evento", eventoComprar);
 		return "comprar";
 	}
 
@@ -26,7 +26,7 @@ public class CarrinhoComprasContoller {
 	public String comprar(HttpServletRequest request,
 			@ModelAttribute("evento") Evento evento,
 			BindingResult result,Model model){
-		precoString = evento.getPreco();
+		eventoComprar=evento;
 		return "redirect:/carrinhoCompras";
 	}
 }
