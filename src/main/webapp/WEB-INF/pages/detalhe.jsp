@@ -30,7 +30,7 @@
 			</div>
 		</div>
 
-
+		<input type="hidden" name="id" value="${evento.id}">
 		<input type="hidden" name="nome" value="${evento.nome}">
 		<input type="hidden" name="local" value="${evento.local}">
 		<input type="hidden" name="cidade" value="${evento.cidade}">

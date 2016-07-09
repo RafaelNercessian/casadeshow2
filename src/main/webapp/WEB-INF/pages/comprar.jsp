@@ -19,6 +19,7 @@
 			</tr>
 		</thead>
 		<tbody>
+			<c:forEach items="${lista}" var="listaCompras">
 				<tr>
 					<td><img width="100"
 						src='<c:url value="/resources/images/${evento.nomeDaFoto}"/>'></td>
@@ -26,9 +27,20 @@
 					<td>${evento.local}</td>
 					<td>${evento.cidade}</td>
 					<td>${evento.data}</td>
-					<td>${evento.quantidade}</td>
-					<td>${evento.preco}</td>
-					<td>${evento.precoTotal}</td>
+					<td>${listaCompras.quantidade}</td>
+					<td>${listaCompras.preco}</td>
+					<td>${total}</td>
+				</tr>
+			</c:forEach>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><strong>Total:R$ ${total}</strong></td>
 				</tr>
 		</tbody>
 	</table>

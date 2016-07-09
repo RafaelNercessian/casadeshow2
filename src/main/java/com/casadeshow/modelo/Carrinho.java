@@ -1,23 +1,22 @@
 package com.casadeshow.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import org.springframework.context.annotation.Scope;
 
-@Entity
 @Scope("session")
 public class Carrinho {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private float preco;
 	private int quantidade;
-
+	private Evento evento;
+	
+	public Evento getEvento() {
+		return evento;
+	}
+	public void setEvento(Evento evento) {
+		this.evento = evento;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -42,14 +41,12 @@ public class Carrinho {
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + Float.floatToIntBits(preco);
-		result = prime * result + quantidade;
 		return result;
 	}
 	@Override
@@ -66,19 +63,7 @@ public class Carrinho {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (Float.floatToIntBits(preco) != Float.floatToIntBits(other.preco))
-			return false;
-		if (quantidade != other.quantidade)
-			return false;
 		return true;
 	}
-	
-	
-	
-	
+		
 }

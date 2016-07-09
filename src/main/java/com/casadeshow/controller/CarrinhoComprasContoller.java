@@ -1,16 +1,12 @@
 package com.casadeshow.controller;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,8 +17,6 @@ import com.casadeshow.modelo.Evento;
 @Controller
 public class CarrinhoComprasContoller {
 
-	private Evento eventoComprar;
-	private BigDecimal precoTotal;
 	private List<Carrinho> lista;
 
 	@RequestMapping("/carrinho")
@@ -42,6 +36,7 @@ public class CarrinhoComprasContoller {
 		float preco = Float.parseFloat(precoSemVirgula.toString());
 		carrinho.setPreco(preco);
 		carrinho.setQuantidade(quantidade);
+		carrinho.setId(evento.getId());
 		if (lista == null) {
 			lista = new ArrayList<Carrinho>();
 			lista.add(carrinho);
