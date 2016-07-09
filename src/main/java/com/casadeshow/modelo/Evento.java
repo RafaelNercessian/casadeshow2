@@ -34,7 +34,7 @@ public class Evento implements Serializable {
 	private String preco;
 	private String quantidade;
 	private BigDecimal precoTotal;
-		
+
 	public String getQuantidade() {
 		return quantidade;
 	}

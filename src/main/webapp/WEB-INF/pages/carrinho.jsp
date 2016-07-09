@@ -20,7 +20,7 @@
 				<td>${c.preco}</td>
 				<td>${c.quantidade}</td>
 				<td><form:form method="post" modelAttribute="carrinho"
-						action="${s:mvcUrl('CC#deleta').build()}">
+						action="${s:mvcUrl('CCC#deleta').build()}">
 						<input type="hidden" name="id" value="${c.id}" />
 						<input type="hidden" name="nome" value="${c.nome}" />
 						<input type="hidden" name="preco" value="${c.preco}" />

@@ -1,15 +1,23 @@
 package com.casadeshow.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.springframework.context.annotation.Scope;
 
+@Entity
 @Scope("session")
 public class Carrinho {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private float preco;
 	private int quantidade;
-	
+
 	public Integer getId() {
 		return id;
 	}

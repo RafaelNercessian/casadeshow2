@@ -5,7 +5,7 @@
 <%@include file="/WEB-INF/pages/cabecalho.jsp"%>
 <div class="container">
 	<form:form method="post" commandName="evento"
-		action="${s:mvcUrl('CCC#comprar').build()}">
+		action="${s:mvcUrl('CCC#adicionaCarrinho').build()}">
 		<div style="margin-top: 100px" class="row featurette">
 			<div class="col-md-7 col-md-push-5">
 				<h2 style="margin-top: 0 !important;" class="featurette-heading">${evento.nome}</h2>

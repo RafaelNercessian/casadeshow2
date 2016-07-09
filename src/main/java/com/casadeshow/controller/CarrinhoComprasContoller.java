@@ -2,8 +2,11 @@ package com.casadeshow.controller;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.casadeshow.modelo.Carrinho;
 import com.casadeshow.modelo.Evento;
 
 @Controller
@@ -19,30 +23,61 @@ public class CarrinhoComprasContoller {
 
 	private Evento eventoComprar;
 	private BigDecimal precoTotal;
+	private List<Carrinho> lista;
 
-	@RequestMapping("/carrinhoCompras")
+	@RequestMapping("/carrinho")
 	public String carrinhoCompras(Model model) {
-		int quantidadeInt = Integer.parseInt(eventoComprar.getQuantidade());
-		BigDecimal quantidade = new BigDecimal(quantidadeInt);
-		int i = eventoComprar.getPreco().indexOf(",");
-		StringBuilder precoSemVirgula = new StringBuilder(
-				eventoComprar.getPreco());
-		precoSemVirgula.setCharAt(i, '.');
-
-		float precoInt = Float.parseFloat(precoSemVirgula.toString());
-		BigDecimal preco = new BigDecimal(precoInt);
-		precoTotal = preco.multiply(quantidade);
-		BigDecimal precoTotalArredondado = precoTotal.setScale(2, RoundingMode.CEILING);
-		eventoComprar.setPrecoTotal(precoTotalArredondado);
-		model.addAttribute("evento", eventoComprar);
-		return "comprar";
+		return "carrinho";
 	}
 
-	@RequestMapping(value = "/comprar", method = RequestMethod.POST)
-	public String comprar(HttpServletRequest request,
-			@ModelAttribute("evento") Evento evento, BindingResult result,
-			Model model) {
-		eventoComprar = evento;
-		return "redirect:/carrinhoCompras";
+	@RequestMapping(value = "/adicionaCarrinho", method = RequestMethod.POST)
+	public String adicionaCarrinho(
+			@ModelAttribute("evento") Evento evento,HttpSession session) {
+		Carrinho carrinho = new Carrinho();
+		int quantidade = Integer.parseInt(evento.getQuantidade());
+		int i = evento.getPreco().indexOf(",");
+		StringBuilder precoSemVirgula = new StringBuilder(
+				evento.getPreco());
+		precoSemVirgula.setCharAt(i, '.');
+		float preco = Float.parseFloat(precoSemVirgula.toString());
+		carrinho.setPreco(preco);
+		carrinho.setQuantidade(quantidade);
+		if (lista == null) {
+			lista = new ArrayList<Carrinho>();
+			lista.add(carrinho);
+		} else {
+			boolean flag = false;
+			for (Carrinho carrinhoDaLista : lista) {
+				if (carrinhoDaLista.getId() == carrinho.getId()) {
+					carrinhoDaLista.setQuantidade(carrinhoDaLista
+							.getQuantidade() + carrinho.getQuantidade());
+					flag = true;
+					break;
+				}
+			}
+
+			if (flag == false) {
+				lista.add(carrinho);
+			}
+		}
+		session.setAttribute("lista", lista);
+		session.setAttribute("total", getTotal(lista));
+		return "redirect:/carrinho";
+	}
+	
+	@RequestMapping(value="/deleta",method=RequestMethod.POST)
+	public String deleta(@ModelAttribute("carrinho") Carrinho carrinho,HttpSession session){
+		lista.remove(carrinho);
+		session.setAttribute("lista", lista);
+		session.setAttribute("total", getTotal(lista));
+		return "redirect:/carrinho";
+	}
+
+	public float getTotal(List<Carrinho> lista) {
+		float total = 0;
+		for (Carrinho carrinho : lista) {
+			total+=(carrinho.getPreco()*carrinho.getQuantidade());
+		}
+		return total;
 	}
 }
