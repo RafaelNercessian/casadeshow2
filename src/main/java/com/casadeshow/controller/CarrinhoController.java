@@ -3,11 +3,11 @@ package com.casadeshow.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +25,11 @@ public class CarrinhoController {
 	public String form(ModelMap model) {
 		model.put("carrinho", new Carrinho());
 		return "form";
+	}
+	
+	@RequestMapping("/carrinho")
+	public String carrinho(){
+		return "carrinho";
 	}
 
 	@RequestMapping(value = "/adicionaCarrinho", method = RequestMethod.POST)
@@ -50,7 +55,15 @@ public class CarrinhoController {
 		}
 		session.setAttribute("lista", lista);
 		session.setAttribute("total", getTotal(lista));
-		return "carrinho";
+		return "redirect:/carrinho";
+	}
+	
+	@RequestMapping(value="/deleta",method=RequestMethod.POST)
+	public String deleta(@ModelAttribute("carrinho") Carrinho carrinho,HttpSession session){
+		lista.remove(carrinho);
+		session.setAttribute("lista", lista);
+		session.setAttribute("total", getTotal(lista));
+		return "redirect:/carrinho";
 	}
 
 	public float getTotal(List<Carrinho> lista) {
