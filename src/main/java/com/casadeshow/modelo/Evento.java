@@ -1,6 +1,7 @@
 package com.casadeshow.modelo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,17 @@ public class Evento implements Serializable {
 	@Transient
 	private MultipartFile imagem;
 	private String preco;
-	
+	private String quantidade;
+	private BigDecimal precoTotal;
+		
+	public String getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(String quantidade) {
+		this.quantidade = quantidade;
+	}
+
 	public String getPreco() {
 		return preco;
 	}
@@ -110,6 +121,14 @@ public class Evento implements Serializable {
 
 	public void setData(String data) {
 		this.data = data;
+	}
+
+	public BigDecimal getPrecoTotal() {
+		return precoTotal;
+	}
+
+	public void setPrecoTotal(BigDecimal precoTotal) {
+		this.precoTotal = precoTotal;
 	}
 
 

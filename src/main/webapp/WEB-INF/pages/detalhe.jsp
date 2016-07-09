@@ -13,7 +13,8 @@
 				<p class="lead">${evento.cidade}</p>
 				<p class="lead">${evento.data}</p>
 				<p class="lead">R$ ${evento.preco}</p>
-
+				<p class="lead">Quantidade: </p><input type="text" name="quantidade">
+				
 				<button type="submit" class="btn btn-success">
 					<span class="glyphicon glyphicon-shopping-cart"> <span
 						style="font-size: 20px; font-family: Helvetica;">Comprar</span></span>

@@ -13,7 +13,9 @@
 				<th>Local</th>
 				<th>Cidade</th>
 				<th>Data</th>
+				<th>Qtde.</th>
 				<th>Preço</th>
+				<th>Preço Total</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,7 +26,9 @@
 					<td>${evento.local}</td>
 					<td>${evento.cidade}</td>
 					<td>${evento.data}</td>
+					<td>${evento.quantidade}</td>
 					<td>${evento.preco}</td>
+					<td>${evento.precoTotal}</td>
 				</tr>
 		</tbody>
 	</table>
