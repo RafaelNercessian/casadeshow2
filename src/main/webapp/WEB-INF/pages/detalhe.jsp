@@ -9,14 +9,15 @@
 		<div style="margin-top: 100px" class="row featurette">
 			<div class="col-md-7 col-md-push-5">
 				<h2 style="margin-top: 0 !important;" class="featurette-heading">${evento.nome}</h2>
-				<p class="lead">${evento.local}</p>
-				<p class="lead">${evento.cidade}</p>
-				<p class="lead">${evento.data}</p>
-				<p class="lead">R$ ${evento.preco}</p>
-				<p class="lead">Quantidade: </p><input type="text" name="quantidade">
-				
+				<p>${evento.local}</p>
+				<p>${evento.cidade}</p>
+				<p>${evento.data}</p>
+				<p>R$ ${evento.preco}</p>
+				<span>Quantidade: <input type="text" name="quantidade"/></span>
+				<br/>
+				<br/>
 				<button type="submit" class="btn btn-success">
-					<span class="glyphicon glyphicon-shopping-cart"> <span
+					<span class="glyphicon glyphicon-shopping-cart" style="font-size: 20px;font-weight:bold;"> <span
 						style="font-size: 20px; font-family: Helvetica;">Comprar</span></span>
 				</button>
 			</div>

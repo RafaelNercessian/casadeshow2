@@ -1,10 +1,12 @@
 package com.casadeshow.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,13 +17,14 @@ import com.casadeshow.modelo.Carrinho;
 import com.casadeshow.modelo.Evento;
 
 @Controller
+@Scope("session")
 public class CarrinhoComprasContoller {
 
 	private List<Carrinho> lista;
 	
-	@RequestMapping("/carrinho")
+	@RequestMapping("/carrinhoDeCompras")
 	public String carrinhoCompras(Model model) {
-		return "comprar";
+		return "carrinhoDeCompras";
 	}
 
 	@RequestMapping(value = "/adicionaCarrinho", method = RequestMethod.POST)
@@ -57,16 +60,18 @@ public class CarrinhoComprasContoller {
 			}
 		}
 		session.setAttribute("lista", lista);
+		session.setAttribute("itensNoCarrinho", lista.size());
 		session.setAttribute("total", getTotal(lista));
-		return "redirect:/carrinho";
+		return "redirect:/carrinhoDeCompras";
 	}
 	
 	@RequestMapping(value="/deleta",method=RequestMethod.POST)
 	public String deleta(@ModelAttribute("carrinho") Carrinho carrinho,HttpSession session){
 		lista.remove(carrinho);
 		session.setAttribute("lista", lista);
+		session.setAttribute("itensNoCarrinho", lista.size());
 		session.setAttribute("total", getTotal(lista));
-		return "redirect:/carrinho";
+		return "redirect:/carrinhoDeCompras";
 	}
 
 	public float getTotal(List<Carrinho> lista) {
@@ -74,6 +79,8 @@ public class CarrinhoComprasContoller {
 		for (Carrinho carrinho : lista) {
 			total+=(carrinho.getPreco()*carrinho.getQuantidade());
 		}
-		return total;
+		 BigDecimal bd = new BigDecimal(Float.toString(total));
+		    bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+		    return bd.floatValue();
 	}
 }

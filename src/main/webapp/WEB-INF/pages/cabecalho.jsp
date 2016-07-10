@@ -47,6 +47,7 @@
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="<c:url value="/"/>" /><strong>Home</strong></a></li>
 							<li><a href='<c:url value="/listaEventos"/>' /><strong>Eventos</strong></a></li>
+							<li><a href='<c:url value="/carrinhoDeCompras"/>' /><span class="glyphicon glyphicon-shopping-cart" style="font-size:20px"><span style="font-family:Helvetica;"> (${itensNoCarrinho})</span></span></a></li>
 						</ul>
 					</div>
 				</div>
