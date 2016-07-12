@@ -1,42 +1,51 @@
 package com.casadeshow.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "user_roles")
-public class UserRoles {
+public class UserRoles{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false)
-	private int user_role_id;
 	@Column(nullable = false)
 	private String role;
-	@OneToOne
-	@JoinColumn(name = "username")
+	@OneToOne(mappedBy = "userRoles")
+	@PrimaryKeyJoinColumn
 	private Users users;
-
-	public int getUser_role_id() {
-		return user_role_id;
+	@Id
+	@GeneratedValue(generator = "customForeignGenerator")
+	@org.hibernate.annotations.GenericGenerator(name = "customForeignGenerator", strategy = "foreign", parameters = @Parameter(name = "property", value = "users"))
+	private String username;
+	
+	public String getUsername() {
+		return username;
 	}
-
-	public void setUser_role_id(int user_role_id) {
-		this.user_role_id = user_role_id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getRole() {
 		return role;
 	}
-
 	public void setRole(String role) {
 		this.role = role;
 	}
+	public Users getUsers() {
+		return users;
+	}
+	public void setUsers(Users users) {
+		this.users = users;
+	}
 
+	
 }
