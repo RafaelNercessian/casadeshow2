@@ -13,4 +13,9 @@ public class HomeController {
 		session.setAttribute("itensNoCarrinho", 0);
 		return "home";
 	}
+	
+	@RequestMapping("/hello")
+	public String hello(){
+		return "hello";
+	}
 }
