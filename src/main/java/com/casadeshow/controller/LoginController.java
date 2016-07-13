@@ -3,7 +3,11 @@ package com.casadeshow.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +19,7 @@ import com.casadeshow.dao.UserRolesDao;
 import com.casadeshow.dao.UsersDao;
 import com.casadeshow.modelo.UserRoles;
 import com.casadeshow.modelo.Users;
+import com.casadeshow.validator.UsersValidator;
 
 @Controller
 public class LoginController {
@@ -24,6 +29,14 @@ public class LoginController {
 	
 	@Autowired
 	private UserRolesDao userRolesDao;
+	
+	@Autowired
+	private UsersValidator validator;
+
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		binder.setValidator(validator);
+	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(
@@ -45,13 +58,17 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/cadastro")
-	public String cadastro(){
+	public String cadastro(Model model){
+		model.addAttribute("users", new Users());
 		return "cadastro";
 	}
 	
 	@Transactional
 	@RequestMapping(value = "/cadastro", method = RequestMethod.POST)
-	public String adiciona(@ModelAttribute("users") Users users,BindingResult result,RedirectAttributes redirectAttributes) {
+	public String adiciona(@ModelAttribute("users") @Validated Users users,BindingResult result,RedirectAttributes redirectAttributes) {
+		if(result.hasErrors()){
+			return "cadastro";
+		}
 		usersDao.adiciona(users);
 		UserRoles userRoles = new UserRoles();
 		userRoles.setUsers(users);
