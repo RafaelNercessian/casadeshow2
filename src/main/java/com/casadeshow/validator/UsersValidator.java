@@ -38,9 +38,14 @@ public class UsersValidator implements Validator {
 	
         List<Users> listaDeUsernamesCadastrados=dao.listaDeUsernames();
         
-        if(listaDeUsernamesCadastrados.contains(users.getUsername())){
-        	errors.rejectValue("username", "username", "Esse nome de usuário já existe, por favor escolha outro!");
-        }
+        for (Users usersDaLista : listaDeUsernamesCadastrados) {
+        	 if(usersDaLista.getUsername().equals(users.getUsername())){
+             	errors.rejectValue("username", "username", "Esse nome de usuário já existe, por favor escolha outro!");
+             	break;
+             }
+		}
+        
+       
         
         if(!users.getCpf().matches("^[0-9]*$")){
         	errors.rejectValue("cpf", "cpf", "O campo CPF só aceita números");

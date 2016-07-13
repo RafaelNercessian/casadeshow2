@@ -38,12 +38,12 @@
 		<form:input path="cpf" id="cpf" class="form-control"/>
 		<span style="color:red;font-weight:bold"><form:errors path="cpf" class="control-label" /></span>
 	</div>
-	<div class="form-group col-md-9">
+	<div class="form-group col-md-8">
 		<label for="endereco">Endereço:</label> 
 		<form:input path="endereco" id="endereco" class="form-control"/>
 		<span style="color:red;font-weight:bold"><form:errors path="endereco" class="control-label" /></span>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-md-4">
 		<label for="numero">Nº:</label> 
 		<form:input path="numero" id="numero" class="form-control"/>
 		<span style="color:red;font-weight:bold"><form:errors path="numero" class="control-label" /></span>
