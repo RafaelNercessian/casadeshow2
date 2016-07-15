@@ -6,6 +6,7 @@
 <div class="container">
 <div class="row" >
 <h1 style="margin-top:100px;text-decoration: underline">Carrinho de compras</h1>
+	
 	<table style="margin-top: 60px;"
 		class="table table-hover table-striped">
 		<thead>
@@ -52,7 +53,11 @@
 		</tbody>
 	</table>
 	
-	<button type="submit" class="btn btn-success">Finalizar Compra
-						</button>
+		
+	
+<form:form action="${s:mvcUrl('CCC#finalizaCompra').build()}">
+		<button type="submit" class="btn btn-success">Finalizar Compra
+							</button>
+	</form:form>
 	<%@include file="/WEB-INF/pages/rodape.jsp"%>
 </div>

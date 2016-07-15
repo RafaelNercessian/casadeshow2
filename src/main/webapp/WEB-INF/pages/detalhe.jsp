@@ -13,7 +13,7 @@
 				<p>${evento.cidade}</p>
 				<p>${evento.data}</p>
 				<p>R$ ${evento.preco}</p>
-				<span>Quantidade: <input type="text" name="quantidade"/></span>
+				<span>Quantidade: <input type="text" name="quantidade" required="required"/></span>
 				<br/>
 				<br/>
 				<button type="submit" class="btn btn-success">

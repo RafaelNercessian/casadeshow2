@@ -66,7 +66,7 @@ public class CarrinhoComprasContoller {
 	}
 	
 	@RequestMapping(value="/deleta",method=RequestMethod.POST)
-	public String deleta(@ModelAttribute("carrinho") Carrinho carrinho,HttpSession session){
+	public String deleta(@ModelAttribute("carrinho") Carrinho carrinho, HttpSession session){
 		lista.remove(carrinho);
 		session.setAttribute("lista", lista);
 		session.setAttribute("itensNoCarrinho", lista.size());
@@ -82,5 +82,10 @@ public class CarrinhoComprasContoller {
 		 BigDecimal bd = new BigDecimal(Float.toString(total));
 		    bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
 		    return bd.floatValue();
+	}
+	
+	@RequestMapping("/finalizaCompra")
+	public String finalizaCompra(){
+		return "finalizaCompra";
 	}
 }
