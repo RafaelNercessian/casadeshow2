@@ -9,9 +9,9 @@
         <div style="margin-top:100px" class="col-sm-6 col-sm-offset-3">
             <div id="imaginary_container"> 
                 <div class="input-group stylish-input-group">
-                   <input name="nome" class="form-control">
+                   <input name="nome" class="form-control" placeholder="Buscar evento">
                     <span class="input-group-addon">
-                        <button type="submit">
+                        <button type="submit" id="busca">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>  
                     </span>
@@ -42,7 +42,7 @@
 					<td>${evento.local}</td>
 					<td>${evento.cidade}</td>
 					<td>${evento.data}</td>
-					<td>R$ ${evento.preco}</td>
+					<td><strong>R$ ${evento.preco}</strong></td>
 					<td><a
 						href="${s:mvcUrl('EC#detalhe').arg(0,evento.id).build()}"><span
 							class="glyphicon glyphicon-info-sign" /></a></td>
@@ -50,5 +50,5 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<%@include file="/WEB-INF/pages/rodape.jsp"%>
 </div>
+	<%@include file="/WEB-INF/pages/rodape.jsp"%>
