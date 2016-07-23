@@ -1,5 +1,7 @@
 package com.casadeshow.modelo;
 
+import javax.validation.constraints.Min;
+
 import org.springframework.context.annotation.Scope;
 
 @Scope("session")

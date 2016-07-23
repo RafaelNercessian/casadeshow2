@@ -77,4 +77,9 @@ public class LoginController {
 		redirectAttributes.addFlashAttribute("msg", "Usuário cadastrado com sucesso!");
 		return "redirect:/cadastro";
 	}
+	
+	@RequestMapping("/loginUsuario")
+	public String loginUsurio(){
+		return "loginUsuario";
+	}
 }

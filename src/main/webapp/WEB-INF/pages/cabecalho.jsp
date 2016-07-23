@@ -44,8 +44,10 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="<c:url value="/"/>" /><strong>Home</strong></a></li>
 						<li><a href='<c:url value="/listaEventos"/>' /><strong>Eventos</strong></a></li>
-						<li><a href='<c:url value="/login"/>' /><strong><span class="glyphicon glyphicon-log-in"></span> Login</strong></a></li>
-						<li><a href='<c:url value="/cadastro"/>' /><strong><span class="glyphicon glyphicon-pencil"></span> Cadastro</strong></a></li>
+						<c:if test="${pageContext.request.userPrincipal.name == null}">
+							<li><a href='<c:url value="/loginUsuario"/>' /><strong><span class="glyphicon glyphicon-log-in"></span> Login</strong></a></li>
+							<li><a href='<c:url value="/cadastro"/>' /><strong><span class="glyphicon glyphicon-pencil"></span> Cadastro</strong></a></li>
+						</c:if>
 						<li style="position: absolute;left: 85%"><a href='<c:url value="/carrinhoDeCompras"/>' /><span
 							class="glyphicon glyphicon-shopping-cart" style="font-size: 20px"><span
 								style="font-family: Helvetica;"> (${itensNoCarrinho})</span></span></a></li>

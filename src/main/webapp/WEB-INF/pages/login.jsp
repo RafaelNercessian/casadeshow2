@@ -2,15 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
-<!-- Bootstrap core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css"/>"
 	rel="stylesheet">
-
-<!-- Custom styles for this template -->
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 </head>
 <div class="container center_div">
-	<form class="form-signin" name='loginForm'
+	<form id="formularioLogin" class="form-signin" name='loginForm'
 		action="<c:url value='/j_spring_security_check' />" method='POST'>
 		<h2 class="form-signin-heading">Login</h2>
 		<c:if test="${not empty error}">

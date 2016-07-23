@@ -7,7 +7,7 @@
 <h2>Cadastro</h2>
 <br />
 <form:form method="post" commandName="users" action="${s:mvcUrl('LC#adiciona').build()}">
-	<p>${msg}</p>
+	<p style="font-weight: bold;color:green">${msg}</p>
 	<div class="form-group">
 		<label for="username">Nome de usuário:</label> 
 		<form:input path="username" id="username" class="form-control"/>
@@ -34,32 +34,32 @@
 		<span style="color:red;font-weight:bold"><form:errors path="sobrenome" class="control-label" /></span>
 	</div>
 	<div class="form-group">
-		<label for="cpf">CPF:</label> 
+		<label for="cpf">CPF: (Apenas números)</label> 
 		<form:input path="cpf" id="cpf" class="form-control"/>
 		<span style="color:red;font-weight:bold"><form:errors path="cpf" class="control-label" /></span>
 	</div>
-	<div class="form-group col-md-8">
+	<div class="form-group col-md-8" style="padding-left:0">
 		<label for="endereco">Endereço:</label> 
 		<form:input path="endereco" id="endereco" class="form-control"/>
 		<span style="color:red;font-weight:bold"><form:errors path="endereco" class="control-label" /></span>
 	</div>
-	<div class="form-group col-md-4">
+	<div class="form-group col-md-4" style="padding-right:0">
 		<label for="numero">Nº:</label> 
 		<form:input path="numero" id="numero" class="form-control"/>
 		<span style="color:red;font-weight:bold"><form:errors path="numero" class="control-label" /></span>
 	</div>
 	<div class="form-group ">
-		<label for="cep">CEP:</label> 
+		<label for="cep">CEP: (Apenas números)</label> 
 		<form:input path="cep" id="cep" class="form-control"/>
 		<span style="color:red;font-weight:bold"><form:errors path="cep" class="control-label" /></span>
 	</div>
 	<div class="form-group">
-		<label for="telefone">Telefone:</label> 
+		<label for="telefone">Telefone: (Apenas números)</label> 
 		<form:input path="telefone" id="telefone" class="form-control"/>
 		<span style="color:red;font-weight:bold"><form:errors path="telefone" class="control-label" /></span>
 	</div>
-	<button type="submit" class="btn btn-default">Submit</button>
+	<button type="submit" class="btn btn-primary pull-right" style="margin-top:40px;margin-bottom:40px">Enviar</button>
 </form:form>
 </body>
-<%@include file="/WEB-INF/pages/rodape.jsp" %>
 </div>
+<%@include file="/WEB-INF/pages/rodape.jsp" %>

@@ -39,8 +39,5 @@
 		<input type="hidden" name="preco" value="${evento.preco}">
 		<input type="hidden" name="nomeDaFoto" value="${evento.nomeDaFoto}">
 	</form:form>
-
-	<%@include file="/WEB-INF/pages/rodape.jsp"%>
-
-
 </div>
+	<%@include file="/WEB-INF/pages/rodape.jsp"%>

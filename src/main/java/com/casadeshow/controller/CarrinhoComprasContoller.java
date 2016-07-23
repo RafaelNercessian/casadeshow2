@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -84,8 +85,8 @@ public class CarrinhoComprasContoller {
 		    return bd.floatValue();
 	}
 	
-	@RequestMapping("/finalizaCompra")
-	public String finalizaCompra(){
+	@RequestMapping("/finalizaCompra/itens={itensNoCarrinho}")
+	public String finalizaCompra(@PathVariable int itensNoCarrinho){
 		return "finalizaCompra";
 	}
 }
