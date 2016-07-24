@@ -20,5 +20,5 @@
 	<br/>
 	<br/>
 	<br/>
-<%@include file="/WEB-INF/pages/rodape.jsp"%>
 </div>
+<%@include file="/WEB-INF/pages/rodape.jsp"%>

@@ -12,6 +12,26 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<context-param>
+		<param-name>authtoken</param-name>
+		<param-value>T6YdIbacG9H8alS0PJwln5vx5AuLsh5YtYIi29E0upsv5ikTPDUxceYuqx8</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>posturl</param-name>
+		<param-value>https://www.sandbox.paypal.com/br/cgi-bin/webscr</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>business</param-name>
+		<param-value>demobusinessrafa@gmail.com</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>returnurl</param-name>
+		<param-value>http://localhost:8080/casadeshow/finalizaCompra</param-value>a
+	</context-param>
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

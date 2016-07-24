@@ -10,12 +10,10 @@
 	display: none;
 }
 </style>
-<sec:authorize access="hasRole('ROLE_USER')">
-	<c:if test="${pageContext.request.userPrincipal.name != null}">
+
 		<!-- For login user -->
 		<div class="container">
-			<h2 style="margin-top: 80px">${pageContext.request.userPrincipal.name},
-				agradecemos a sua compra!</h2>
+			<h2 style="margin-top: 80px">Agradecemos a sua compra, marque na agenda esse grande evento!</h2>
 			<table style="margin-top: 30px;"
 				class="table table-hover table-striped">
 				<thead>
@@ -55,5 +53,4 @@
 			</table>
 		</div>
 			<%@include file="/WEB-INF/pages/rodape.jsp"%>
-	</c:if>
-</sec:authorize>
+

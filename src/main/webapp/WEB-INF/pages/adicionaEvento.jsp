@@ -44,5 +44,5 @@
 	<button type="submit" class="btn btn-default">Submit</button>
 </form:form>
 </body>
-<%@include file="/WEB-INF/pages/rodape.jsp" %>
 </div>
+<%@include file="/WEB-INF/pages/rodape.jsp" %>

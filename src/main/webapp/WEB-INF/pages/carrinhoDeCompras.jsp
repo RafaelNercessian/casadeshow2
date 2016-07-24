@@ -56,10 +56,16 @@
 
 
 
-		<form:form
-			action="${s:mvcUrl('CCC#finalizaCompra').arg(0,itensNoCarrinho).build()}">
-			<button type="submit" class="btn btn-success pull-right">Finalizar
-				Compra</button>
+		<form:form action="${initParam['posturl']}">
+			<input type="hidden" name="upload" value="1">
+			<input type="hidden" name="return" value="${initParam['returnurl']}">
+			<input type="hidden" name="cmd" value="_cart">
+			<input type="hidden" name="business" value="${initParam['business']}">
+			<input type="hidden" name="item_name_1" value="Product 1">
+			<input type="hidden" name="amount_1" value="${total}">
+			<input type="hidden" name="quantity_1" value="1">
+			<input type="hidden" name="currency_code" value="BRL">
+			<input type="submit" value="Payment" class="btn btn-success pull-right">
 		</form:form>
 	</div>
 </div>

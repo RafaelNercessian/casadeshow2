@@ -85,8 +85,8 @@ public class CarrinhoComprasContoller {
 		    return bd.floatValue();
 	}
 	
-	@RequestMapping("/finalizaCompra/itens={itensNoCarrinho}")
-	public String finalizaCompra(@PathVariable int itensNoCarrinho){
+	@RequestMapping("/finalizaCompra")
+	public String finalizaCompra(){
 		return "finalizaCompra";
 	}
 }
